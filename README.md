@@ -20,14 +20,16 @@ A Python utility for analyzing Postfix mail logs from Mailcow Dockerized to gene
 
 ## Installation
 
-1. Clone this repository:
+**Important:** This script must be run on the same server where Mailcow Dockerized is installed. It can be downloaded and run from any location on that server.
+
+1. Clone this repository or download the code onto your Mailcow Dockerized server:
 
 ```bash
 git clone https://github.com/andyruonline/mailcow-dockerized-searchable-email-delivery-report.git
 cd mailcow-dockerized-searchable-email-delivery-report
 ```
 
-2. Make the script executable:
+2. Make the main python script file executable:
 
 ```bash
 chmod +x mailcow_email_delivery_report.py
@@ -42,6 +44,8 @@ sudo cp mailcow_email_delivery_report.py /usr/local/bin/mailcow_email_delivery_r
 **Note:** This script requires `sudo` privileges to read Docker container logs. You can either:
 - Run the script with `sudo`: `sudo ./mailcow_email_delivery_report.py`
 - Add your user to the `docker` group: `sudo usermod -aG docker $USER` (requires logout/login)
+
+Once installed, you can run the script from any directory on your server.
 
 ## Usage
 
