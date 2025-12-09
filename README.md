@@ -1,6 +1,6 @@
 # Mailcow Email Delivery Report
 
-A Python utility for analyzing Postfix mail logs from Mailcow Docker containers to generate email delivery tracking reports.
+A Python utility for analyzing Postfix mail logs from Mailcow Dockerized to generate email delivery tracking reports.
 
 ## Features
 
@@ -143,4 +143,4 @@ Pull requests welcome! Please open an issue first to discuss major changes.
 
 ## Author
 
-Created for Mailcow email server administration and troubleshooting.
+Created for Mailcow Dockerized email server administration and troubleshooting.
