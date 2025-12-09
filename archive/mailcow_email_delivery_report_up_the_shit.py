@@ -359,21 +359,6 @@ def print_report(messages, search_term, search_type, date_filter, status_filter=
         if info["from"] != "-" or info["to"] != "-" or info["size"] != "-" or info["status"] != "-"
     }
     
-    # DEBUG: Show sample messages with jeanshannon before filtering
-    if search_term and 'jeanshannon' in search_term.lower():
-        jean_count = sum(1 for info in useful_messages.values() 
-                        if 'jeanshannon' in info.get('from', '').lower() or 'jeanshannon' in info.get('to', '').lower())
-        print(f"\n[DEBUG] Found {jean_count} messages with 'jeanshannon' in from/to before search filter")
-        print(f"[DEBUG] Search term: '{search_term}', type: {search_type}")
-        # Show first 3
-        count = 0
-        for qid, info in useful_messages.items():
-            if 'jeanshannon' in info.get('from', '').lower():
-                print(f"[DEBUG] Sample FROM: {info['from']}")
-                count += 1
-                if count >= 3:
-                    break
-    
     # Apply search filter based on type
     if search_term:
         search_lower = search_term.lower()
@@ -517,20 +502,17 @@ Examples:
         # Interactive mode - prompt for inputs
         print("\n=== Mailcow Email Tracking Report ===\n")
         
-        search_term = input("Search term (partial string search, so enter eg '@domain' to search domain): ").strip()
+        search_term = input("Search for (email, domain, or partial): ").strip()
         
-        # Only ask for search type if search term is not blank
-        if search_term:
-            print("\nSearch type:")
-            print("1. Sender (FROM address)")
-            print("2. Recipient (TO address)")
-            print("3. Both sender and recipient")
-            search_choice = input("Choose [1-3] (default: 3): ").strip() or "3"
-            
-            search_type_map = {"1": "sender", "2": "recipient", "3": "both"}
-            search_type = search_type_map.get(search_choice, "both")
-        else:
-            search_type = "both"  # Default when no search term
+        # Get search type
+        print("\nSearch type:")
+        print("1. Sender (FROM address)")
+        print("2. Recipient (TO address)")
+        print("3. Both sender and recipient")
+        search_choice = input("Choose [1-3] (default: 3): ").strip() or "3"
+        
+        search_type_map = {"1": "sender", "2": "recipient", "3": "both"}
+        search_type = search_type_map.get(search_choice, "both")
         
         # Get status filter
         print("\nFilter by delivery status:")
@@ -544,12 +526,7 @@ Examples:
         status_filter = status_map.get(status_choice, None)
         
         date_filter = input("\nFilter by date (e.g. '5 Dec', 'Dec 5', '5 Dec 2025', or '3' for last 3 days, or blank): ").strip()
-        
-        # Only ask for time if date is provided
-        if date_filter:
-            time_filter = input("Filter by time (e.g. '23:46:06' or blank): ").strip() or None
-        else:
-            time_filter = None
+        time_filter = input("Filter by time (e.g. '23:46:06' or blank): ").strip() or None
     else:
         # Command-line mode - use arguments
         print("\n=== Mailcow Email Tracking Report ===\n")
