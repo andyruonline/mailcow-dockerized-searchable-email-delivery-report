@@ -50,12 +50,14 @@ Once installed, you can run the script from any directory on your server.
 ## Usage
 
 ### Interactive Mode
-Simply run the script with no arguments and answer the prompts:
+Simply run the script with no arguments and answer the prompts to specify search terms:
 ```bash
 ./mailcow_email_delivery_report.py
 ```
 
 ### Command-Line Mode
+Run the script with arguments to skip the prompt and generate the report immediately
+
 
 **Search for specific email/domain:**
 ```bash
