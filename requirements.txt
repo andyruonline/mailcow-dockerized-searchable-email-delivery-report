@@ -1,0 +1,11 @@
+# No external dependencies required
+# This tool uses only Python standard library modules:
+# - argparse (CLI argument parsing)
+# - json (JSON output formatting)
+# - sys (system operations)
+# - subprocess (Docker command execution)
+# - datetime (time handling)
+# - re (regular expressions for log parsing)
+# - typing (type hints)
+
+# Python 3.6+ is required

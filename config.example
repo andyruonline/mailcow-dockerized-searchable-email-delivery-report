@@ -1,0 +1,16 @@
+# Example Configuration for Mailcow Email Delivery Report
+
+# Default Postfix container name for mailcow dockerized
+# If your setup uses a different name, update this value
+CONTAINER_NAME=mailcowdockerized-postfix-mailcow-1
+
+# Alternative container names that might be used:
+# CONTAINER_NAME=mailcowdockerized_postfix-mailcow_1
+# CONTAINER_NAME=postfix-mailcow
+
+# Default number of log lines to analyze
+DEFAULT_LINES=1000
+
+# You can also use environment variables to override these settings:
+# export MAILCOW_CONTAINER=your-container-name
+# export MAILCOW_LOG_LINES=5000
