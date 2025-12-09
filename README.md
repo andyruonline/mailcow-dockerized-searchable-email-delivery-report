@@ -21,20 +21,27 @@ A Python utility for analyzing Postfix mail logs from Mailcow Docker containers 
 ## Installation
 
 1. Clone this repository:
+
 ```bash
-git clone https://github.com/YOUR_USERNAME/mailcow-email-delivery-report.git
-cd mailcow-email-delivery-report
+git clone https://github.com/andyruonline/mailcow-dockerized-searchable-email-delivery-report.git
+cd mailcow-dockerized-searchable-email-delivery-report
 ```
 
 2. Make the script executable:
+
 ```bash
 chmod +x mailcow_email_delivery_report.py
 ```
 
-3. (Optional) Copy to your bin directory:
+3. (Optional) Copy to your bin directory for system-wide access:
+
 ```bash
 sudo cp mailcow_email_delivery_report.py /usr/local/bin/mailcow_email_delivery_report
 ```
+
+**Note:** This script requires `sudo` privileges to read Docker container logs. You can either:
+- Run the script with `sudo`: `sudo ./mailcow_email_delivery_report.py`
+- Add your user to the `docker` group: `sudo usermod -aG docker $USER` (requires logout/login)
 
 ## Usage
 
