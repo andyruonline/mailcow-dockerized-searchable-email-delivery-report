@@ -1,4 +1,4 @@
-# Mailcow Email Delivery Report
+# Mailcow Dockerized Email Delivery Report
 
 A Python utility for analyzing Postfix mail logs from Mailcow Dockerized to generate email delivery tracking reports.
 
