@@ -68,9 +68,6 @@ class MailcowDeliveryReport:
             'bounced': re.compile(
                 r'(\w{3}\s+\d{1,2}\s+\d{2}:\d{2}:\d{2}).*postfix/\w+\[(\d+)\]:\s+([A-F0-9]+):\s+to=<([^>]+)>.*status=bounced'
             ),
-            'from': re.compile(
-                r'(\w{3}\s+\d{1,2}\s+\d{2}:\d{2}:\d{2}).*postfix/\w+\[(\d+)\]:\s+([A-F0-9]+):\s+from=<([^>]*)>'
-            ),
         }
         
         for status, pattern in patterns.items():
@@ -107,13 +104,12 @@ class MailcowDeliveryReport:
         
         for line in logs.split('\n'):
             parsed = self.parse_log_entry(line)
-            if parsed and parsed['status'] != 'from':
+            if parsed:
                 entries.append(parsed)
         
         return entries
     
     def filter_entries(self, entries: List[Dict], 
-                      sender: Optional[str] = None,
                       recipient: Optional[str] = None,
                       status: Optional[str] = None,
                       queue_id: Optional[str] = None) -> List[Dict]:
@@ -122,7 +118,6 @@ class MailcowDeliveryReport:
         
         Args:
             entries: List of delivery entries
-            sender: Filter by sender email
             recipient: Filter by recipient email
             status: Filter by delivery status
             queue_id: Filter by queue ID
